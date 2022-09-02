@@ -8,6 +8,7 @@ Right now it's just a script for extracting nonprofit data from propublica.org. 
 Merged csv of all Washington non-profits is stored locally on my machine. 
 
 TODO:
+- Find a way to extract more records. [ProPublica](https://projects.propublica.org/nonprofits/search?utf8=%E2%9C%93&q=port+angeles&state%5Bid%5D=&ntee%5Bid%5D=&c_code%5Bid%5D=) show 304 organizations for "Port Angeles" but looks like you only have ~60-70 in your data. 
 - Figure out location data beyond city, zip code is probably ideal
 - Either way, we'll need GEOs around each city/zip in order to coordinate against a user's request say based on shipping address
 - Eventually we'll want to pull this data from Guidestar, but I'd like to have enough revenue to validate the $2-5K/year cost for the api subscription. Make do with pro publica in the meantime.
