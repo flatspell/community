@@ -1,4 +1,7 @@
 # community
+Main repo for FlatSpell Technologies unnamed Community product.
+
+Here's the white-paper: https://docs.google.com/document/d/17CWfyLtK_Xe6IuP9kkiat9gJ85Rz_Z0KaHwy5GWUasg/edit#
 
 Right now it's just a script for extracting nonprofit data from propublica.org. Every other API charges $ for their data. I do get rate-limited by pro-publica so I'll need to look into a way to get more data from them or have the script sleep for 1 minute after every 60 records or so.
 
