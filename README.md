@@ -1,5 +1,5 @@
 # community
-Main repo for FlatSpell Technologies unnamed Community product.
+Main repo for FlatSpell Technologies Community product.
 
 Here's the white-paper: https://docs.google.com/document/d/17CWfyLtK_Xe6IuP9kkiat9gJ85Rz_Z0KaHwy5GWUasg/edit#
 
