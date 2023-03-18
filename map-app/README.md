@@ -1,0 +1,1 @@
+Community is a Python Web Application build in Flask, Bootstrap, and Leaflet. It provisions economic data about small towns across America for consumption by local government, small businesses, chambers of commerce, and community economists to inform economic development and improve the vitality of small towns in the United States 
