@@ -12,3 +12,6 @@ TODO:
 - Figure out location data beyond city, zip code is probably ideal
 - Either way, we'll need GEOs around each city/zip in order to coordinate against a user's request say based on shipping address
 - Eventually we'll want to pull this data from Guidestar, but I'd like to have enough revenue to validate the $2-5K/year cost for the api subscription. Make do with pro publica in the meantime.
+
+## Web App
+There is a basic web app that you can run locally. Make sure environment is set up correctly and go to the `map-app` directory and run `python app.py`. You should be given instructions in the command line for where the app can be opened in your browser.
