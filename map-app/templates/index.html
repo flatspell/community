@@ -34,7 +34,7 @@
                 east = -123.4100;
 
             // Overpass API URL
-            var overpassUrl = `https://overpass-api.de/api/interpreter?data=[out:json][timeout:25];(node[shop](${south},${west},${north},${east});node[amenity](${south},${west},${north},${east}););out;>;out skel qt;`;
+            var overpassUrl = `https://overpass-api.de/api/interpreter?data=[out:json];(node["amenity"="restaurant"](${south},${west},${north},${east}););out;`;
 
             // Fetch data from the Overpass API
             fetch(overpassUrl)
