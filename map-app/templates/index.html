@@ -13,10 +13,11 @@
   
     <div id="menu">
       <img src="{{ url_for('static', filename='images/flatspell_logo_32x32px.png') }}" alt="Logo">
-      <h2>Menu</h2>  
-      <div class="menu-item">Item 1</div>
-      <div class="menu-item">Item 2</div>
-      <div class="menu-item">Item 3</div>
+      <h2>Community-App</h2>  
+      <div class="menu-item">Investment</div>
+      <div class="menu-item">Small Business</div>
+      <div class="menu-item">Commerce</div>
+      <div class="menu-item">Community</div>
     </div>
 
     <div id="map"></div>
@@ -44,6 +45,7 @@
                 east = -123.4100;
 
             // Overpass API URL
+            // Need to make this more dynamic
             var overpassUrl = `https://overpass-api.de/api/interpreter?data=[out:json];(node["amenity"="restaurant"](${south},${west},${north},${east}););out;`;
 
             // Fetch data from the Overpass API
