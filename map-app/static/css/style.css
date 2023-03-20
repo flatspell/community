@@ -1,0 +1,39 @@
+#map {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 80vh;
+  width: 80%;
+  margin-left: 250px;
+}
+
+#menu {
+  background-color: blue;
+  padding: 20px;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  overflow-y: scroll;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100%;
+}
+
+#menu img {
+  max-width: 50%;
+  height: auto;
+  display: block;
+  margin-bottom: 20px;
+}
+
+/* Style the menu items */
+.menu-item {
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.menu-item:hover {
+  color: #fff;
+  background-color: #007bff;
+}

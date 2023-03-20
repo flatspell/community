@@ -5,7 +5,7 @@ from flask import Flask, render_template, jsonify
 from dotenv import load_dotenv
 
 load_dotenv()
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static', static_folder='static')
 # CORS(app, origins=['http://localhost:3000'])
 
 @app.route('/')
