@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,7 +11,7 @@
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 </head>
 <body>
-  
+
     <div id="menu">
       <img src="{{ url_for('static', filename='images/flatspell_logo_32x32px.png') }}" alt="Logo">
       <h2>Community-App</h2>  
@@ -19,6 +20,11 @@
       <div class="menu-item"><a href="{{ url_for('commerce') }}">Commerce</a></div>
       <div class="menu-item"><a href="{{ url_for('community') }}">Community</a></div>
       <div class="menu-item"><a href="{{ url_for('local_wealth_fund') }}">Local Wealth Fund</a></div>      
+    
+      <footer>
+        <p>&copy; 2023 Flatspell</p>
+      </footer>
+      
     </div>
 
     <div id="map"></div>
@@ -80,5 +86,6 @@
 }
 
     </script>
+    
 </body>
 </html>
