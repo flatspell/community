@@ -14,10 +14,11 @@
     <div id="menu">
       <img src="{{ url_for('static', filename='images/flatspell_logo_32x32px.png') }}" alt="Logo">
       <h2>Community-App</h2>  
-      <div class="menu-item">Investment</div>
-      <div class="menu-item">Small Business</div>
-      <div class="menu-item">Commerce</div>
-      <div class="menu-item">Community</div>
+      <div class="menu-item"><a href="{{ url_for('investment') }}">Investment</a></div>
+      <div class="menu-item"><a href="{{ url_for('small_business') }}">Small Business</a></div>
+      <div class="menu-item"><a href="{{ url_for('commerce') }}">Commerce</a></div>
+      <div class="menu-item"><a href="{{ url_for('community') }}">Community</a></div>
+      <div class="menu-item"><a href="{{ url_for('local_wealth_fund') }}">Local Wealth Fund</a></div>      
     </div>
 
     <div id="map"></div>
