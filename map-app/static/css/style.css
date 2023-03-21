@@ -7,6 +7,10 @@
   margin-left: 250px;
 }
 
+#location-dropdown {
+  margin-bottom: 40px;
+}
+
 #menu {
   background-color: rgb(255, 255, 255);
   padding: 20px;

@@ -11,10 +11,17 @@
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 </head>
 <body>
-
+  
     <div id="menu">
       <img src="{{ url_for('static', filename='images/flatspell_logo_32x32px.png') }}" alt="Logo">
       <h2>Community-App</h2>  
+
+      <select id="location-dropdown">
+        <option value="juneau-ak">Juneau, AK</option>
+        <option value="port-angeles-wa">Port Angeles, WA</option>
+        <option value="port-townsend-wa">Port Townsend, WA</option>
+      </select>
+
       <div class="menu-item"><a href="{{ url_for('investment') }}">Investment</a></div>
       <div class="menu-item"><a href="{{ url_for('small_business') }}">Small Business</a></div>
       <div class="menu-item"><a href="{{ url_for('commerce') }}">Commerce</a></div>
@@ -24,68 +31,12 @@
       <footer>
         <p>&copy; 2023 Flatspell</p>
       </footer>
-      
+
     </div>
 
     <div id="map"></div>
-
-    <script>
-        // Initialize the map
-        var map = L.map('map').setView([48.1181, -123.4307], 13);
-
-        // Set the map provider and attribution
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
-
-        // Function to create a marker with a popup
-        function createMarker(lat, lng, name) {
-            var marker = L.marker([lat, lng]).addTo(map);
-            marker.bindPopup(`<b>${name}</b><br>Click for more info.`);
-        }
-
-        function fetchBusinesses() {
-            // Define the bounding box for Port Angeles, WA
-            var south = 48.1000,
-                west = -123.5000,
-                north = 48.1300,
-                east = -123.4100;
-
-            // Overpass API URL
-            // Need to make this more dynamic
-            var overpassUrl = `https://overpass-api.de/api/interpreter?data=[out:json];(node["amenity"="restaurant"](${south},${west},${north},${east}););out;`;
-
-            // Fetch data from the Overpass API
-            fetch(overpassUrl)
-                .then((response) => response.json())
-                .then((data) => {
-                    data.elements.forEach((element) => {
-                        if (element.lat && element.lon) {
-                            // Create a marker for each business
-                            createMarker(element.lat, element.lon, element.tags.name || 'Unknown');
-                        }
-                    });
-                })
-                .catch((error) => {
-                    console.error("Error fetching data from Overpass API:", error);
-                });
-        }
-
-        // Fetch businesses from the Overpass API
-        fetchBusinesses();
-
-        function fetchCensusData() {
-          fetch('/census_data')
-            .then((response) => response.json())
-            .then((data) => {
-                // Update the pane or container with the new data
-            })
-            .catch((error) => {
-                console.error("Error fetching Census data:", error);
-        });
-}
-
-    </script>
     
+    <script src="static/js/map.js"></script>
+
 </body>
 </html>
