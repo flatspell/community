@@ -4,10 +4,39 @@
 
 {% block content %}
   <h1>Commerce</h1>
+
+  <select id="location-dropdown">
+    <option value="juneau-ak">Juneau, AK</option>
+    <option value="port-angeles-wa">Port Angeles, WA</option>
+    <option value="port-townsend-wa">Port Townsend, WA</option>
+  </select>
   <ul>
-    <li>Census Data</li>
-    <li>Local Business Data</li>
-    <li>Point of Sale Data</li>
-    <li>Tourism Data</li>
+
+    <h2>Economic Overview</h2>
+    <h2>Local Businesses</h2>
+      <table>
+        <tr>
+          <th>Business Name</th>
+          <th>Location</th>
+          <th>Weekly Sales</th>
+          <th>Weekly Vistors</th>
+        </tr>
+        <tr>
+          <td>Al's Toy Barn</td>
+          <td>767 Front Street</td>
+          <td>$19,250</td>
+          <td>600</td>
+        </tr>
+        <tr>
+          <td>La Ratatouille</td>
+          <td>123 Main Street</td>
+          <td>$22,300</td>
+          <td>520</td>
+        </tr>
+      </table>
+    <h2>Tourism Data</h2>
+    <div id="heatmap-container"></div>
+    <script src="heatmap.js"></script>
   </ul>
+  
 {% endblock %}
