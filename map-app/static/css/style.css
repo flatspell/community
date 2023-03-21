@@ -89,3 +89,40 @@ th {
   background-color: #1bae70;
   color: #fff;
 }
+
+.big-value-container {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.big-value-item {
+  flex: 1;
+  position: relative;
+}
+
+.big-value {
+  font-size: 48px;
+  font-weight: bold;
+  margin: 0;
+  display: inline-block; /* Make the big value and arrow inline-block elements to allow vertical alignment */
+  vertical-align: middle; /* Vertically center the big value and arrow */
+}
+
+.arrow-up {
+  display: inline-block;
+  margin-left: 10px; /* Add some space between the big value and arrow */
+  vertical-align: middle; /* Vertically center the arrow */
+  font-size: 36px; /* Adjust the size of the arrow */
+  color: green; /* Set the color of the upward-pointing arrow */
+  transform: translateY(-50%) rotate(45deg); /* Rotate the arrow 45 degrees */
+}
+
+.arrow-down {
+  display: inline-block;
+  margin-left: 10px;
+  vertical-align: middle;
+  font-size: 36px;
+  color: red; /* Set the color of the downward-pointing arrow */
+  transform: translateY(-50%) rotate(-45deg); /* Rotate the arrow -45 degrees */
+}
