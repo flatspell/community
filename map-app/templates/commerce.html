@@ -3,6 +3,16 @@
 {% block title %}Commerce{% endblock %}
 
 {% block content %}
+<head>
+  <title>My Web Page</title>
+  <!-- Link to Leaflet CSS file -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
+  <!-- Link to Leaflet JavaScript file -->
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  <!-- <script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script> -->
+  <!-- Link to heatmap.js file -->
+</head>
+
   <h1>Commerce</h1>
 
   <select id="location-dropdown">
@@ -54,8 +64,9 @@
         </tr>
       </table>
     <h2>Tourism Data</h2>
-    <div id="heatmap-container"></div>
-    <script src="heatmap.js"></script>
+    
+      <div id="commerce-map" class="commerce-map"></div>
+      <script src="static/js/map.js"></script>
   </ul>
   
 {% endblock %}

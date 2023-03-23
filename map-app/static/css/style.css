@@ -7,6 +7,13 @@
   margin-left: 250px;
 }
 
+.commerce-map {
+  position: relative;
+  height: 600px; /* adjust to desired height */
+  width: 100%;
+  margin-bottom: 20px;
+}
+
 #location-dropdown {
   margin-bottom: 40px;
 }
@@ -105,24 +112,49 @@ th {
   font-size: 48px;
   font-weight: bold;
   margin: 0;
-  display: inline-block; /* Make the big value and arrow inline-block elements to allow vertical alignment */
-  vertical-align: middle; /* Vertically center the big value and arrow */
+  position: relative;
 }
 
 .arrow-up {
   display: inline-block;
-  margin-left: 10px; /* Add some space between the big value and arrow */
-  vertical-align: middle; /* Vertically center the arrow */
-  font-size: 36px; /* Adjust the size of the arrow */
-  color: green; /* Set the color of the upward-pointing arrow */
-  transform: translateY(-50%) rotate(45deg); /* Rotate the arrow 45 degrees */
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 36px;
+  color: green;
+  margin-left: 10px;
+  right: -25px;
 }
 
 .arrow-down {
   display: inline-block;
-  margin-left: 10px;
-  vertical-align: middle;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   font-size: 36px;
-  color: red; /* Set the color of the downward-pointing arrow */
-  transform: translateY(-50%) rotate(-45deg); /* Rotate the arrow -45 degrees */
+  color: red;
+  margin-left: 10px;
+  right: -25px;
+  transform: rotate(180deg); /* Rotate the arrow 180 degrees to point down */
+}
+
+#heatmap-container {
+  height: 500px;
+  width: 100%;
+}
+
+.horizontal-list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.horizontal-list li {
+  margin-right: 20px;
+}
+
+.horizontal-list li:last-child {
+  margin-right: 0;
 }

@@ -1,5 +1,11 @@
 // Initialize the map
-var map = L.map('map').setView([58.2017, -134.0142], 13);
+var mapId = 'map'; // default map id
+if (document.getElementById('commerce-map')) {
+  mapId = 'commerce-map'; // if commerce-map exists, use it instead
+}
+
+var map = L.map(mapId).setView([58.2017, -134.0142], 13);
+
 
 // Set the map provider and attribution
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {

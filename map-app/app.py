@@ -98,6 +98,11 @@ def community():
 def local_wealth_fund():
     return render_template('local_wealth_fund.html')
 
+# @app.route('/heatmap.js')
+# def heatmap_js():
+#     js_dir = os.path.join(app.root_path, 'static', 'js')
+#     return send_from_directory(js_dir, 'heatmap.js')
+
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=5001, debug=True)
