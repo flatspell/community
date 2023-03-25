@@ -3,26 +3,28 @@
   <head>
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-  </head>
-  <body>
     <div class="navbar-container">
-    <nav class="navbar">
+      <nav class="navbar">
         <ul>
           <img src="{{ url_for('static', filename='images/flatspell_logo.png') }}" alt="Logo">
-          <li><a href="{{ url_for('home') }}">HOME</a></li>
-          <li><a href="{{ url_for('investment') }}">INVESTMENT</a></li>
-          <li><a href="{{ url_for('small_business') }}">SMALL BUSINESS</a></li>
-          <li><a href="{{ url_for('commerce') }}">COMMERCE</a></li>
-          <li><a href="{{ url_for('community') }}">COMMUNITY</a></li>
-          <li><a href="{{ url_for('local_wealth_fund') }}">LOCAL WEALTH FUND</a></li>
+          <li><a href="{{ url_for('home') }}">Home</a></li>
+          <li><a href="{{ url_for('investment') }}">Investment</a></li>
+          <li><a href="{{ url_for('small_business') }}">Small Business</a></li>
+          <li><a href="{{ url_for('commerce') }}">Commerce</a></li>
+          <li><a href="{{ url_for('community') }}">Community</a></li>
+          <li><a href="{{ url_for('local_wealth_fund') }}">Local Wealth Fund</a></li>
         </ul>
       </nav>
     </div>
+  </head>
+  <body>
     <div id="content" style="padding-top: 70px;">
       {% block content %}{% endblock %}
     </div>
     <footer>
-      <p>&copy; 2023 Flatspell</p>
+      <div class="text-block-4">Built in the Pacific Northwest 🌲 🇺🇸</div>
+      <div class="text-block-3">© 2023 Flatspell</div>
+      <a href="/privacy-policy" target="_blank" class="link">Privacy Policy</a>
     </footer>
   </body>
 </html>

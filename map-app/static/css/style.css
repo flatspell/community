@@ -1,6 +1,5 @@
 body {
   font-family: 'Montserrat', sans-serif;
-  margin: 0;
   padding-left: 40px;
   padding-right: 40px;
 }
@@ -8,6 +7,7 @@ body {
 h1 {
   font-family: 'Montserrat', sans-serif;
   margin-top: 0;
+  padding-top: 70px;
 }
 
 h2, h3 {
@@ -21,6 +21,7 @@ h2, h3 {
   height: 100%;
   width: 80%;
   margin-left: 250px;
+  margin-top: 100px;
 }
 
 .commerce-map {
@@ -38,7 +39,7 @@ h2, h3 {
   background-color: rgb(255, 255, 255);
   padding: 20px;
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
+  font-family: 'Montserrat', sans-serif;
   overflow-y: scroll;
   position: fixed;
   top: 0;
@@ -67,17 +68,19 @@ h2, h3 {
 }
 
 .navbar-container {
-  padding: 0 20px; /* adjust the padding as needed */
+  /* padding: 0 20px; adjust the padding as needed / */
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
 }
 
 .navbar {
   display: flex;
   justify-content: center;
-  /* align-items: center; */
   background-color: rgb(255, 255, 255);
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
   height: 100%;
-  margin: 0;
   padding-top: 20px;
   padding-bottom: 20px;
 }
@@ -113,13 +116,12 @@ h2, h3 {
 }
 
 .navbar img {
-  margin-right: 10px;
+  margin-right: 40px;
   height: 32px;
   width: 32px;
   background-color: transparent;
   opacity: 0.5;
   transition: opacity 0.2s ease-in-out;
-
 }
 
 .navbar img:hover {
@@ -206,4 +208,35 @@ th {
 
 .horizontal-list li:last-child {
   margin-right: 0;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f9f9f9;
+  padding: 10px 20px;
+  box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 9999;
+}
+
+.text-block-4 {
+  margin: 0;
+}
+
+.text-block-3 {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 5px;
+  text-align: center;
+}
+
+.link {
+  margin-left: auto;
+  float: right;
 }

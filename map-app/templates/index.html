@@ -1,3 +1,8 @@
+{% extends 'base.html' %}
+
+{% block title %}Homepage{% endblock %}
+
+{% block content %}
 
 <!DOCTYPE html>
 
@@ -14,8 +19,7 @@
 </head>
 
 <body>
-    <div id="menu">
-      <img src="{{ url_for('static', filename='images/flatspell_logo_256x256px.png') }}" alt="Logo">
+    <div id="menu" style="padding-top: 150px;">
       <h2>Community-App</h2>  
 
       <select id="location-dropdown">
@@ -29,16 +33,13 @@
       <div class="menu-item"><a href="{{ url_for('commerce') }}">Commerce</a></div>
       <div class="menu-item"><a href="{{ url_for('community') }}">Community</a></div>
       <div class="menu-item"><a href="{{ url_for('local_wealth_fund') }}">Local Wealth Fund</a></div>      
-    
-      <footer>
-        <p>&copy; 2023 Flatspell</p>
-      </footer>
 
     </div>
 
-    <div id="map"></div>
+    <div id="map" style="padding-top: 150px;"></div>
     
     <script src="static/js/map.js"></script>
 
 </body>
 </html>
+{% endblock %}
