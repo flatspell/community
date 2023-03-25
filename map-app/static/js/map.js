@@ -4,8 +4,7 @@ if (document.getElementById('commerce-map')) {
   mapId = 'commerce-map'; // if commerce-map exists, use it instead
 }
 
-var map = L.map(mapId).setView([58.2017, -134.0142], 13);
-
+var map = L.map(mapId).setView([48.1000, -123.5000], 13);
 
 // Set the map provider and attribution
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -69,10 +68,7 @@ function handleLocationSelect() {
   fetchBusinesses(coordinates);
 }
 
-// Event Listener to check when the user changes the dropdown selection
-// and then change the coordinates for fetchbusinesses
-document.getElementById("location-dropdown").addEventListener("change", function() {
-  var location = this.value;
+function updateBusinesses(location) {
   var south, west, north, east;
 
   // Set the bounding box coordinates based on the selected location
@@ -95,4 +91,17 @@ document.getElementById("location-dropdown").addEventListener("change", function
 
   // Call the fetchBusinesses() function with the selected coordinates
   fetchBusinesses(south, west, north, east);
+}
+
+// Event listener to update the businesses on page load
+window.addEventListener('load', function() {
+  var dropdown = document.getElementById('location-dropdown');
+  var selectedValue = dropdown.value;
+  updateBusinesses(selectedValue);
+});
+
+// Event listener to update the businesses on filter change
+document.getElementById("location-dropdown").addEventListener("change", function() {
+  var location = this.value;
+  updateBusinesses(location);
 });

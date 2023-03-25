@@ -14,14 +14,17 @@ h2, h3 {
   font-family: 'Montserrat', sans-serif;
 }
 
+.map-container {
+  border: 1px solid #ccc;
+  height: 700px;
+  width: 100%;
+  margin-top: 20px;
+  position: relative;
+}
+
 #map {
-  position: absolute;
-  top: 0;
-  left: 0;
   height: 100%;
-  width: 80%;
-  margin-left: 250px;
-  margin-top: 100px;
+  width: 100%;
 }
 
 .commerce-map {
@@ -29,10 +32,6 @@ h2, h3 {
   height: 600px; /* adjust to desired height */
   width: 100%;
   margin-bottom: 20px;
-}
-
-#location-dropdown {
-  margin-bottom: 40px;
 }
 
 #menu {
@@ -73,6 +72,7 @@ h2, h3 {
   top: 0;
   width: 100%;
   z-index: 9999;
+  margin-left: -50px;
 }
 
 .navbar {
@@ -240,3 +240,62 @@ footer {
   margin-left: auto;
   float: right;
 }
+
+/* Style the container for the search bar and filter bar */
+.search-filter-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 500px;
+  margin-top: 200px;
+  margin-bottom: 20px;
+}
+
+/* Style the search bar input */
+.search-input {
+  width: 60%;
+  height: 40px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 20px;
+  border: none;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the filter bar */
+.filter-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #ccc;
+}
+
+.filter-item {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.filter-item:last-child {
+  margin-right: 0;
+}
+
+/* Style the filter bar buttons */
+.filter-button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.filter-button:hover {
+  color: #1bae70;
+}
+
+/* #location-dropdown {
+  margin-bottom: 40px;
+} */

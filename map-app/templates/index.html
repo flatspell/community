@@ -19,26 +19,42 @@
 </head>
 
 <body>
-    <div id="menu" style="padding-top: 150px;">
-      <h2>Community-App</h2>  
-
+  <div class="filter-bar">
+    <div class="filter-item">
       <select id="location-dropdown">
         <option value="juneau-ak">Juneau, AK</option>
-        <option value="port-angeles-wa">Port Angeles, WA</option>
+        <option value="port-angeles-wa" selected>Port Angeles, WA</option>
         <option value="port-townsend-wa">Port Townsend, WA</option>
       </select>
-
-      <div class="menu-item"><a href="{{ url_for('investment') }}">Investment</a></div>
-      <div class="menu-item"><a href="{{ url_for('small_business') }}">Small Business</a></div>
-      <div class="menu-item"><a href="{{ url_for('commerce') }}">Commerce</a></div>
-      <div class="menu-item"><a href="{{ url_for('community') }}">Community</a></div>
-      <div class="menu-item"><a href="{{ url_for('local_wealth_fund') }}">Local Wealth Fund</a></div>      
-
     </div>
-
-    <div id="map" style="padding-top: 150px;"></div>
-    
-    <script src="static/js/map.js"></script>
+    <div class="filter-item">
+      <select id="business-type-dropdown">
+        <option value="retail">Retail</option>
+        <option value="restaurant">Restaurant</option>
+        <option value="manufacturing">Manufacturing</option>
+      </select>
+    </div>
+    <div class="filter-item">
+      <select id="business-type-dropdown">
+        <option value="retail">Retail</option>
+        <option value="restaurant">Restaurant</option>
+        <option value="manufacturing">Manufacturing</option>
+      </select>    
+    </div>
+    <div class="filter-item">
+      <select id="business-type-dropdown">
+        <option value="retail">Retail</option>
+        <option value="restaurant">Restaurant</option>
+        <option value="manufacturing">Manufacturing</option>
+      </select>
+    </div>
+  </div>
+  
+  <div class="map-container">
+    <div id="map"></div>
+  </div>
+  
+  <script src="static/js/map.js"></script>
 
 </body>
 </html>

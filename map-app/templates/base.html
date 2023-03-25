@@ -3,6 +3,7 @@
   <head>
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+   
     <div class="navbar-container">
       <nav class="navbar">
         <ul>
@@ -16,8 +17,11 @@
         </ul>
       </nav>
     </div>
+
   </head>
+  
   <body>
+
     <div id="content" style="padding-top: 70px;">
       {% block content %}{% endblock %}
     </div>
@@ -26,5 +30,6 @@
       <div class="text-block-3">© 2023 Flatspell</div>
       <a href="/privacy-policy" target="_blank" class="link">Privacy Policy</a>
     </footer>
+
   </body>
 </html>
