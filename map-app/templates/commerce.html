@@ -7,12 +7,14 @@
   <title>My Web Page</title>
   <!-- Link to Leaflet CSS file -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/maps.css') }}">
   <!-- Link to Leaflet JavaScript file -->
   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
   <!-- <script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script> -->
   <!-- Link to heatmap.js file -->
 </head>
 
+<div class="header-dropdown">
   <h1>Commerce</h1>
 
   <select id="location-dropdown">
@@ -20,6 +22,8 @@
     <option value="port-angeles-wa">Port Angeles, WA</option>
     <option value="port-townsend-wa">Port Townsend, WA</option>
   </select>
+</div>
+
   <ul>
 
     <h2>Economic Overview</h2>

@@ -105,3 +105,41 @@ document.getElementById("location-dropdown").addEventListener("change", function
   var location = this.value;
   updateBusinesses(location);
 });
+
+// Get a reference to the panel element
+var panel = document.getElementById('panel');
+
+// Function to create a marker with a popup and toggle the panel
+function createMarker(lat, lng, name, description) {
+  var marker = L.marker([lat, lng]).addTo(map);
+  marker.bindPopup(`<b>${name}</b><br>Click for more info.`);
+
+  // Toggle the panel when the marker is clicked
+  marker.on('click', function() {
+    // Set the panel content
+    panel.innerHTML = `
+      <h2>${name}</h2>
+      <p>${description}</p>
+    `;
+
+    // Toggle the panel by changing its right position
+    panel.style.right = '0';
+  });
+}
+
+// Function to fetch data and create markers
+function fetchDataAndCreateMarkers() {
+  // Fetch data from the server
+  fetch('/data')
+    .then(response => response.json())
+    .then(data => {
+      // Loop through the data and create markers
+      data.forEach(item => {
+        createMarker(item.lat, item.lng, item.name, item.description);
+      });
+    })
+    .catch(error => console.error('Error fetching data:', error));
+}
+
+// Call the fetchDataAndCreateMarkers() function to initialize the markers
+fetchDataAndCreateMarkers();

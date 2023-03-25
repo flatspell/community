@@ -1,0 +1,67 @@
+.map-container {
+  border: 1px solid #ccc;
+  height: 700px;
+  width: 100%;
+  margin-top: 20px;
+  position: relative;
+}
+
+#map {
+  height: 100%;
+  width: 100%;
+}
+
+.commerce-map {
+  position: relative;
+  height: 600px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+
+.filter-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: left;
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #ccc;
+}
+
+.filter-item {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.filter-item:last-child {
+  margin-right: 0;
+}
+
+/* Style the filter bar buttons */
+.filter-button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.filter-button:hover {
+  color: #1bae70;
+}
+
+#panel {
+  position: absolute;
+  top: 0;
+  right: -400px; /* initially hide the panel off-screen to the right */
+  width: 400px;
+  height: 100%;
+  background-color: white;
+  transition: right 0.3s ease-in-out; /* add a transition effect for the slide animation */
+}
+
+.panel-content {
+  height: 100%;
+  overflow-y: scroll; /* add a scroll bar if the content exceeds the height of the panel */
+}
