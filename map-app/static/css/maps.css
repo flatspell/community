@@ -21,7 +21,6 @@
 
 .filter-bar {
   display: flex;
-  justify-content: space-between;
   align-items: left;
   margin-top: 20px;
   padding: 10px;
