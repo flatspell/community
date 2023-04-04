@@ -1,0 +1,48 @@
+.community-main {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.community-section {
+  flex-basis: calc(33.33% - 20px);
+  background-color: #f9f9f9;
+  padding: 20px;
+  margin-right: 20px;
+}
+
+.community-section:last-child {
+  margin-right: 0;
+}
+
+.community-section h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.community-section p {
+  margin-bottom: 20px;
+}
+
+.community-section a {
+  display: block;
+  background-color: #1bae70;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.community-section a:hover {
+  background-color: #000;
+}
+
+.community-image {
+  width: 300px;
+  height: 300px;
+  margin: 0 auto;
+  display: block;
+  padding: 10px 20px;
+}

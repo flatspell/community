@@ -3,70 +3,37 @@
 {% block title %}Community{% endblock %}
 
 {% block content %}
-<!-- <div class="header-dropdown">
+<div class="header-dropdown">
   <h1>Community</h1>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/header_dropdown.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/community.css') }}">
   <select id="location-dropdown">
+		<option value="port-angeles-wa">Port Angeles, WA</option>
     <option value="juneau-ak">Juneau, AK</option>
-    <option value="port-angeles-wa">Port Angeles, WA</option>
     <option value="port-townsend-wa">Port Townsend, WA</option>
   </select>
 </div>
 
-<ul>
-  <li>Meetups</li>
-  <li>Entrepreneur Resources</li>
-  <li>Online Courses</li>
-</ul> -->
-
-
-
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<title>Forum Page</title>
-	<link rel="stylesheet" type="text/css" href="forum.css">
-  <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
-</head>
-<body>
-	<header>
-		<h1>Forum Title</h1>
-		<nav>
-			<ul>
-				<li><a href="#">Home</a></li>
-				<li><a href="#">Forum</a></li>
-				<li><a href="#">About</a></li>
-			</ul>
-		</nav>
-	</header>
-
-	<main>
-		<section class="thread">
-			<h2>Thread Title</h2>
-			<p>Thread content goes here.</p>
-			<p class="timestamp">Posted on January 1st, 2023 at 12:00pm</p>
-			<a href="#">Reply</a>
-		</section>
-
-		<section class="thread">
-			<h2>Thread Title</h2>
-			<p>Thread content goes here.</p>
-			<p class="timestamp">Posted on January 1st, 2023 at 12:00pm</p>
-			<a href="#">Reply</a>
-		</section>
-
-		<section class="thread">
-			<h2>Thread Title</h2>
-			<p>Thread content goes here.</p>
-			<p class="timestamp">Posted on January 1st, 2023 at 12:00pm</p>
-			<a href="#">Reply</a>
-		</section>
-	</main>
-
-	<footer>
-		<p>&copy; 2023 Forum Name</p>
-	</footer>
-</body>
-</html>
-
+<main class="community-main">
+  <section class="community-section">
+    <h2>Investor Forums</h2>
+    <p>Click here to see each of your individual business investment discussions with businesses, chamber of commerce, and other investors.</p>
+		<img class="community-image" src="{{ url_for('static', filename='images/undraw_community_re_cyrm.svg') }}" alt="Image Description">
+    <a href="#">Join the Forum</a>
+  </section>
+  
+  <section class="community-section">
+    <h2>Event Coordination</h2>
+    <p>Stay up-to-date on the latest networking events and business opportunities in your community. We offer both in-person and virtual event management.</p>
+		<img class="community-image" src="{{ url_for('static', filename='images/undraw_conversation_re_c26v.svg') }}" alt="Image Description">
+    <a href="#">View Upcoming Events</a>
+  </section>
+  
+  <section class="community-section">
+    <h2>Investment & Business Resources</h2>
+    <p>We have plenty of FAQs to help with due diligence, registering your business, and managing the many challenges to grow the business of your dreams.</p>
+		<img class="community-image" src="{{ url_for('static', filename='images/undraw_online_articles_re_yrkj.svg') }}" alt="Image Description">
+    <a href="#">Access Resources</a>
+  </section>
+</main>
 {% endblock %}

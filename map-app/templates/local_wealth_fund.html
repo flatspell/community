@@ -5,16 +5,37 @@
 {% block content %}
 <div class="header-dropdown">
   <h1>Local Wealth Fund</h1>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/local_wealth_fund.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/header_dropdown.css') }}">
   <select id="location-dropdown">
-    <option value="juneau-ak">Juneau, AK</option>
     <option value="port-angeles-wa">Port Angeles, WA</option>
+    <option value="juneau-ak">Juneau, AK</option>
     <option value="port-townsend-wa">Port Townsend, WA</option>
   </select>
 </div>
 
-  <ul>
-    <li>Let your community utilize our investment fund</li>
-    <li>Allow every citizen to be a shareholder in hometown equity</li>
-    <li>Be a stakeholder in what you use everyday</li>
-  </ul>
+<main class="main-content">
+  <section class="section-overview">
+    <h2>Overview</h2>
+    <p>Let your community utilize our local investment fund. Allow every citizen to be a shareholder in hometown equity. Be a stakeholder in what you use everyday.</p>
+  </section>
+
+  <section class="section-details">
+    <h2>Details</h2>
+    <p>The Flatspell Local Wealth Fund works by taking 1% of the investments processed on the platform and sets them aside in a non profit entity. Each year, the participants on the platform (both investors and businesses) take a vote on what community initiative these funds should be spent on in some way that benefits the local community.</p>
+  </section>
+
+  <section class="section-benefits">
+    <h2>Benefits</h2>
+    <ul>
+      <li>Invest in your local community and support economic development.</li>
+      <li>Empower local residents to have a say in where the funds are spent.</li>
+      <li>Strengthen the relationship between investors and the local community.</li>
+    </ul>
+  </section>
+
+  <section class="section-cta">
+    <a href="#" class="btn-join">Join now</a>
+  </section>
+</main>
 {% endblock %}
