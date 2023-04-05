@@ -126,3 +126,7 @@ th {
   border-radius: 5px;
   cursor: pointer;
 }
+
+.airtable-embed {
+  margin-bottom: 20px;
+}
