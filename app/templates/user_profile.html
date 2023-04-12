@@ -1,10 +1,30 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1>{{ user.username }}'s Profile</h1>
-  <ul>
-    <li>Name: {{ user.first_name }} {{ user.last_name }}</li>
-    <li>Email: {{ user.email }}</li>
-    <li>Joined: {{ user.joined_date }}</li>
-  </ul>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>User Profile Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/user_profile.css') }}">
+  </head>
+
+  <body>
+    <div class="header">
+      <div class="profile-pic">
+        <img src="{{ url_for('static', filename='images/profile_pic_default.jpg') }}" alt="Profile Picture">
+      </div>
+      <div class="user-info">
+        <h1>John Doe</h1>
+        <p>First Name: John</p>
+        <p>Last Name: Doe</p>
+        <p>Email: john.doe@example.com</p>
+      </div>
+    </div>
+    <div class="container">
+    </div>
+  </body>
+</html>
+
+
 {% endblock %}

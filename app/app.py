@@ -1,8 +1,8 @@
 import logging
 import os
 import requests
-from flask import Flask, render_template, jsonify, request #, make_response, redirect
-#from flask_basicauth import BasicAuth
+from flask import Flask, render_template, jsonify, request, url_for, redirect
+from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 from dotenv import load_dotenv
 from database import get_database_connection
 
@@ -11,44 +11,45 @@ load_dotenv()
 app = Flask(__name__, static_url_path='/static', static_folder='static')
 app.logger.setLevel(logging.DEBUG)
 
-# app.config['BASIC_AUTH_USERNAME'] = os.getenv('LOGIN_USERNAME')
-# app.config['BASIC_AUTH_PASSWORD'] = os.getenv('LOGIN_PASSWORD')
-# basic_auth = BasicAuth(app)
+login_manager = LoginManager()
+login_manager.init_app(app)
 
-# @app.route('/login', methods=['GET', 'POST'])
-# @basic_auth.required
-# def login():
-#     if request.method == 'POST':
-#         pass
-#     else:
-#         # render the login page
-#         return render_template('login.html')
 
-# @app.before_request
-# def require_login():
-#     allowed_routes = ['login']
-#     if request.endpoint not in allowed_routes and not basic_auth.authenticate():
-#         return redirect('/login')
+@app.route('/login')
+def login():
+    # Render the login page
+    return render_template('login.html')
+
+@app.route('/login', methods=['POST'])
+def login_post():
+    # Process the login form data and authenticate the user
+    username = request.form.get('username')
+    password = request.form.get('password')
+
+    user = User.authenticate(username, password)
+
+    if user:
+        login_user(user)
+        return redirect(url_for('home'))
+    else:
+        flash('Invalid username or password')
+        return redirect(url_for('login'))
+
+@app.route('/logout')
+@login_required
+def logout():
+    # Log the user out and redirect to the home page
+    logout_user()
+    return redirect(url_for('home'))
+
+@app.route('/users/profile')
+@login_required
+def user_profile():
+    # Fetch the user's profile information based on their user_id
+    user_id = current_user.user_id
+    user = User.get(user_id)
     
-# def allowed_request():
-#     auth = request.authorization
-#     if not auth or not (auth.username == app.config['BASIC_AUTH_USERNAME'] and auth.password == app.config['BASIC_AUTH_PASSWORD']):
-#         return False
-#     return True
-
-# @app.after_request
-# def add_header(response):
-#     response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
-#     response.headers['Pragma'] = 'no-cache'
-#     response.headers['Expires'] = '0'
-#     response.headers['WWW-Authenticate'] = 'Basic realm="Login Required"'
-#     return response
-
-# @app.route('/logout')
-# def logout():
-#     response = make_response(redirect('/login'))
-#     response.headers['WWW-Authenticate'] = 'Basic realm="Login Required"'
-#     return response
+    return render_template('user_profile.html', user=user)
 
 @app.route('/')
 def home():
