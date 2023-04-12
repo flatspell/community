@@ -1,11 +1,16 @@
+import logging
 import os
 import requests
-from flask import Flask, render_template, jsonify #, make_response, redirect, request
+from flask import Flask, render_template, jsonify, request #, make_response, redirect
 #from flask_basicauth import BasicAuth
 from dotenv import load_dotenv
+from database import get_database_connection
+
 load_dotenv()
 
 app = Flask(__name__, static_url_path='/static', static_folder='static')
+app.logger.setLevel(logging.DEBUG)
+
 # app.config['BASIC_AUTH_USERNAME'] = os.getenv('LOGIN_USERNAME')
 # app.config['BASIC_AUTH_PASSWORD'] = os.getenv('LOGIN_PASSWORD')
 # basic_auth = BasicAuth(app)
@@ -97,6 +102,44 @@ def community():
 @app.route('/local_wealth_fund')
 def local_wealth_fund():
     return render_template('local_wealth_fund.html')
+
+@app.route('/users/<int:user_id>')
+def user_profile(user_id):
+    conn = get_database_connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM users WHERE id = %s", (user_id,))
+    user_data = cursor.fetchone()
+    cursor.close()
+    conn.close()
+
+    if user_data:
+        user = {'id': user_data[0], 'name': user_data[1], 'email': user_data[2]}
+        return render_template('user_profile.html', user=user)
+    else:
+        return 'User not found'
+
+@app.route('/create_user', methods=['POST'])
+def create_user():
+
+    app.logger.debug("Processing create user request")
+    name = request.form['name']
+    email = request.form['email']
+
+    app.logger.debug("Connecting to flatspell database")
+    conn = get_database_connection()
+    cursor = conn.cursor()
+
+    app.logger.debug("Inserting new user into users table")
+    cursor.execute("INSERT INTO users (name, email) VALUES (%s, %s);", (name, email))
+    conn.commit()
+    cursor.close()
+
+    app.logger.debug("Closing the connection to flatspell database")
+    conn.close()
+
+    return 'New user created successfully'
+
+
 
 # @app.route('/heatmap.js')
 # def heatmap_js():
