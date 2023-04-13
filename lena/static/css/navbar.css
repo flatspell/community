@@ -14,7 +14,7 @@
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
   height: 100%;
   padding-top: 20px;
-  padding-bottom: 20px;
+  /* padding-bottom: 20px; */
 }
 
 .navbar ul {
@@ -59,4 +59,9 @@
 .navbar img:hover {
   opacity: 1;
   color: #000;
+}
+
+.profile-button {
+  float: right;
+  margin-right: 20px;
 }
