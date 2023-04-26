@@ -4,7 +4,7 @@ import requests
 from flask import Flask, render_template, jsonify, request, url_for, redirect
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 from dotenv import load_dotenv
-from database import get_database_connection
+# from database import get_database_connection
 
 load_dotenv()
 
