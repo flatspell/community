@@ -42,26 +42,32 @@ def account():
     return render_template('account.html')
 
 @app.route('/')
+# @login_required
 def home():
     return render_template('index.html')
 
 @app.route('/investment')
+# @login_required
 def investment():
     return render_template('investment.html')
 
 @app.route('/small-business')
+# @login_required
 def small_business():
     return render_template('small-business.html')
 
 @app.route('/commerce')
+# @login_required
 def commerce():
     return render_template('commerce.html')
 
 @app.route('/community')
+# @login_required
 def community():
     return render_template('community.html')
 
 @app.route('/local_wealth_fund')
+# @login_required
 def local_wealth_fund():
     # return render_template('local_wealth_fund.html')
     return render_template('coming_soon.html')
