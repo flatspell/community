@@ -50,7 +50,8 @@ def community():
 
 @app.route('/local_wealth_fund')
 def local_wealth_fund():
-    return render_template('local_wealth_fund.html')
+    # return render_template('local_wealth_fund.html')
+    return render_template('coming_soon.html')
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=5001, debug=True)
