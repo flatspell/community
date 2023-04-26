@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="header-dropdown">
+  <h1>Profile</h1>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/header_dropdown.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/user_profile.css') }}">
+</div>
+
+<div class="user-profile">
+  <div class="profile-section">
+    <h2>Email Address</h2>
+    <div class="form-group">
+      <input type="email" class="form-control" id="email" name="email" value="{{ current_user.email }}" readonly>
+      <button type="button" class="btn btn-primary" id="edit-email-btn">Edit</button>
+    </div>
+  </div>
+
+  <div class="profile-section">
+    <h2>Password Management</h2>
+    <div class="form-group">
+      <label for="current-password">Current Password</label>
+      <input type="password" class="form-control" id="current-password" name="current-password">
+    </div>
+    <div class="form-group">
+      <label for="new-password">New Password</label>
+      <input type="password" class="form-control" id="new-password" name="new-password">
+    </div>
+    <div class="form-group">
+      <label for="confirm-password">Confirm New Password</label>
+      <input type="password" class="form-control" id="confirm-password" name="confirm-password">
+    </div>
+    <button type="button" class="btn btn-primary" id="change-password-btn">Change Password</button>
+  </div>
+</div>
+
+{% endblock %}
