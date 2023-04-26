@@ -11,8 +11,8 @@ load_dotenv()
 app = Flask(__name__, static_url_path='/static', static_folder='static')
 app.logger.setLevel(logging.DEBUG)
 
-# login_manager = LoginManager()
-# login_manager.init_app(app)
+login_manager = LoginManager()
+login_manager.init_app(app)
 
 
 # @app.route('/login')
@@ -42,14 +42,19 @@ app.logger.setLevel(logging.DEBUG)
 #     logout_user()
 #     return redirect(url_for('home'))
 
-@app.route('/users/profile')
+@login_manager.user_loader
+def load_user(user_id):
+    # load a user from the database based on the user_id
+    return User.query.get(int(user_id))
+
+@app.route('/account')
 @login_required
 def user_profile():
     # Fetch the user's profile information based on their user_id
     user_id = current_user.user_id
     user = User.get(user_id)
     
-    return render_template('user_profile.html', user=user)
+    return render_template('account.html', user=user)
 
 @app.route('/')
 def home():
