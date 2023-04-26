@@ -1,0 +1,16 @@
+
+  <div class="container">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+    <h1>Login</h1>
+    <form method="POST" action="{{ url_for('login') }}">
+      <div class="form-group">
+        <label for="username">Email:</label>
+        <input type="text" name="username" class="form-control" id="username">
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" name="password" class="form-control" id="password">
+      </div>
+      <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+  </div>

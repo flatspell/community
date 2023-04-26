@@ -14,6 +14,19 @@ app.logger.setLevel(logging.DEBUG)
 login_manager = LoginManager()
 login_manager.init_app(app)
 
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        email = request.form['email']
+        password = request.form['password']
+        user = User.query.filter_by(email=email).first()
+        if user and password == user.password:
+            login_user(user)
+            return redirect(url_for('home'))
+        else:
+            flash('Invalid email or password')
+    return render_template('login.html')
+
 @login_manager.user_loader
 def load_user(user_id):
     # load a user from the database based on the user_id
