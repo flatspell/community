@@ -48,13 +48,13 @@ def load_user(user_id):
     return User.query.get(int(user_id))
 
 @app.route('/account')
-@login_required
-def user_profile():
+# @login_required
+def account():
     # Fetch the user's profile information based on their user_id
-    user_id = current_user.user_id
-    user = User.get(user_id)
+    # user_id = current_user.user_id
+    # user = User.get(user_id)
     
-    return render_template('account.html', user=user)
+    return render_template('account.html')
 
 @app.route('/')
 def home():
