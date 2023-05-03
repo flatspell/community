@@ -1,11 +1,12 @@
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
-from database import get_database_connection #, db
+from database import get_database_connection, db
 from datetime import datetime
 import uuid
 
 
 class User(UserMixin, db.Model):
+    __tablename__ = 'users'
     id = db.Column(db.String(50), primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
     first_name = db.Column(db.String(50))
@@ -44,4 +45,4 @@ class User(UserMixin, db.Model):
             return None
         
     def __repr__(self):
-            return '<User {}>'.format(self.email)
+        return '<User {}>'.format(self.email)

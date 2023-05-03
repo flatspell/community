@@ -1,12 +1,12 @@
 import logging
 import os
-import requests
-from flask import Flask, render_template, jsonify, request #, make_response, redirect
-#from flask_basicauth import BasicAuth
-from dotenv import load_dotenv
 import psycopg2
 
+from dotenv import load_dotenv
+from flask_sqlalchemy import SQLAlchemy
+
 load_dotenv()
+db = SQLAlchemy()
 logging.basicConfig(level=logging.DEBUG)
 
 def get_database_connection():
