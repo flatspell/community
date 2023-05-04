@@ -4,10 +4,12 @@
     <div class="d-flex align-items-center">
       <img src="{{ url_for('static', filename='images/flatspell_logo.png') }}" alt="Logo" class="logo-img">
       <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        {% if current_user.is_authenticated %}
         <li><a href="{{ url_for('core.home') }}" class="nav-btn">Home</a></li>
         <li><a href="{{ url_for('core.investment') }}" class="nav-btn">Investment</a></li>
         <li><a href="{{ url_for('core.commerce') }}" class="nav-btn">Commerce</a></li>
         <li><a href="{{ url_for('core.community') }}" class="nav-btn">Community</a></li>
+        {% endif %}
       </ul>
     </div>
     <div>
