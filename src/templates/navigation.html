@@ -1,22 +1,24 @@
 <!-- Navigation -->
-<header class="p-3 text-bg-dark">
+<header class="p-3">
   <div class="navbar-container d-flex align-items-center justify-content-between">
     <div class="d-flex align-items-center">
-      <img src="{{ url_for('static', filename='images/flatspell_logo.png') }}" alt="Logo" style="height: 40px;">
+      <img src="{{ url_for('static', filename='images/flatspell_logo.png') }}" alt="Logo" class="logo-img">
       <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="{{ url_for('core.home') }}" class="btn btn-outline-light me-2" style="background-color: #1bae70">Home</a></li>
-        <li><a href="{{ url_for('core.investment') }}" class="btn btn-outline-light me-2" style="background-color: #1bae70">Investment</a></li>
-        <li><a href="{{ url_for('core.commerce') }}" class="btn btn-outline-light me-2" style="background-color: #1bae70">Commerce</a></li>
-        <li><a href="{{ url_for('core.community') }}" class="btn btn-outline-light me-2" style="background-color: #1bae70">Community</a></li>
+        <li><a href="{{ url_for('core.home') }}" class="nav-btn">Home</a></li>
+        <li><a href="{{ url_for('core.investment') }}" class="nav-btn">Investment</a></li>
+        <li><a href="{{ url_for('core.commerce') }}" class="nav-btn">Commerce</a></li>
+        <li><a href="{{ url_for('core.community') }}" class="nav-btn">Community</a></li>
       </ul>
     </div>
     <div>
       {% if current_user.is_authenticated %}
       <a href="{{ url_for('accounts.logout') }}" class="btn btn-danger">Logout</a>
       {% else %}
-      <a href="{{ url_for('accounts.login') }}"><button type="button" class="btn btn-outline-light me-2" style="background-color: #1bae70">Login</button></a>
-      <a href="{{ url_for('accounts.register') }}"><button type="button" class="btn btn-outline-light me-2" style="background-color: #1bae70">Sign up</button></a>
+      <a href="{{ url_for('accounts.login') }}"><button type="button" class="btn btn-outline-light me-2">Login</button></a>
+      <a href="{{ url_for('accounts.register') }}"><button type="button" class="btn btn-outline-light me-2">Sign up</button></a>
       {% endif %}
     </div>
   </div>
 </header>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/navigation.css') }}">
