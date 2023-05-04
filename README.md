@@ -1,9 +1,13 @@
 # community
-Repo for flatspell local investment network product.
+Repo for local investment network product, currently called LENA: Local Economic Network Accelerator. I'm hoping to change the name to Lion.
 
 Here's the original white-paper: https://docs.google.com/document/d/17CWfyLtK_Xe6IuP9kkiat9gJ85Rz_Z0KaHwy5GWUasg/edit#
 
-## Web App
-- This is a basic web app that you can run locally.
-- Make sure environment is set up correctly and go to the `map-app` directory and run `python app.py`.
-- You should be given instructions in the command line for where the app can be opened in your browser.
+## Heroku App
+This app is managed via Heroku and can be accessed at `flatspell.herokuapp.com`.
+
+For local development, download the repo to your machine and setup a development branch. Then from the top level directory you can boot up a local version of the app and test your changes in real-time.
+```
+git checkout -b yourname/yourtask
+python manage.py run
+```
