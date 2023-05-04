@@ -1,10 +1,10 @@
 from flask import Blueprint, flash, redirect, render_template, request, url_for
-from flask_login import login_required, login_user, logout_user
+from flask_login import login_required, login_user, logout_user, current_user
 
 from src import db
 from src.accounts.models import User
 
-from .forms import RegisterForm
+from .forms import RegisterForm, LoginForm
 
 accounts_bp = Blueprint("accounts", __name__)
 
