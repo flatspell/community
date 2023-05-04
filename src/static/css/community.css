@@ -5,6 +5,7 @@
 }
 
 .community-section {
+  position: relative;
   flex-basis: calc(33.33% - 20px);
   background-color: #f9f9f9;
   padding: 20px;
@@ -25,6 +26,11 @@
 }
 
 .community-section a {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  margin: auto;
   display: block;
   background-color: #1bae70;
   color: #fff;
