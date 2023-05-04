@@ -130,3 +130,23 @@ th {
 .airtable-embed {
   margin-bottom: 20px;
 }
+
+.coming-soon {
+  position: relative;
+  display: inline-block;
+}
+
+.coming-soon:hover .coming-soon-banner {
+  visibility: visible;
+}
+
+.coming-soon-banner {
+  position: absolute;
+  top: -30px;
+  left: 0;
+  background-color: #f44336;
+  color: #fff;
+  padding: 10px;
+  border-radius: 4px;
+  visibility: hidden;
+}
