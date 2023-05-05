@@ -22,3 +22,5 @@ From the top level directory you can boot up a local version of the app and test
 git checkout -b yourname/yourtask
 python manage.py run
 ```
+
+You can exit the virtual enviroment by typing `deactivate` in your command line.
