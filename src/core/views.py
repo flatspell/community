@@ -27,10 +27,10 @@ def account():
 @login_required
 @check_is_confirmed
 def commerce():
-    return render_template('commerce.html')
+    return render_template('core/commerce.html')
 
 @core_bp.route('/community')
 @login_required
 @check_is_confirmed
 def community():
-    return render_template('community.html')
+    return render_template('core/community.html')
