@@ -1,8 +1,12 @@
+from datetime import datetime
+
 from flask import Blueprint, flash, redirect, render_template, request, url_for
 from flask_login import login_required, login_user, logout_user, current_user
 
 from src import bcrypt, db
 from src.accounts.models import User
+from src.accounts.token import confirm_token, generate_token
+from src.utils.decorators import logout_required
 
 from .forms import RegisterForm, LoginForm
 
@@ -10,6 +14,7 @@ accounts_bp = Blueprint("accounts", __name__)
 
 
 @accounts_bp.route("/register", methods=["GET", "POST"])
+@logout_required
 def register():
     if current_user.is_authenticated:
         flash("You are already registered.", "info")
@@ -20,6 +25,7 @@ def register():
         db.session.add(user)
         db.session.commit()
 
+        token = generate_token(user.email)
         login_user(user)
         flash("You registered and are now logged in. Welcome!", "success")
 
@@ -28,6 +34,7 @@ def register():
     return render_template("accounts/register.html", form=form)
 
 @accounts_bp.route("/login", methods=["GET", "POST"])
+@logout_required
 def login():
     if current_user.is_authenticated:
         flash("You are already logged in.", "info")
@@ -49,3 +56,21 @@ def logout():
     logout_user()
     flash("You were logged out.", "success")
     return redirect(url_for("accounts.login"))
+
+@accounts_bp.route("/confirm/<token>")
+@login_required
+def confirm_email(token):
+    if current_user.is_confirmed:
+        flash("Account already confirmed.", "success")
+        return redirect(url_for("core.home"))
+    email = confirm_token(token)
+    user = User.query.filter_by(email=current_user.email).first_or_404()
+    if user.email == email:
+        user.is_confirmed = True
+        user.confirmed_at = datetime.now()
+        db.session.add(user)
+        db.session.commit()
+        flash("You have confirmed your account. Thanks!", "success")
+    else:
+        flash("The confirmation link is invalid or has expired.", "danger")
+    return redirect(url_for("core.home"))
