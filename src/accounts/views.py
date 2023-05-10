@@ -7,6 +7,7 @@ from src import bcrypt, db
 from src.accounts.models import User
 from src.accounts.token import confirm_token, generate_token
 from src.utils.decorators import logout_required
+from src.utils.email import send_email
 
 from .forms import RegisterForm, LoginForm
 
@@ -16,9 +17,6 @@ accounts_bp = Blueprint("accounts", __name__)
 @accounts_bp.route("/register", methods=["GET", "POST"])
 @logout_required
 def register():
-    if current_user.is_authenticated:
-        flash("You are already registered.", "info")
-        return redirect(url_for("core.home"))
     form = RegisterForm(request.form)
     if form.validate_on_submit():
         user = User(email=form.email.data, password=form.password.data)
@@ -26,8 +24,13 @@ def register():
         db.session.commit()
 
         token = generate_token(user.email)
+        confirm_url = url_for("accounts.confirm_email", token=token, _external=True)
+        html = render_template("accounts/confirm_email.html", confirm_url=confirm_url)
+        subject = "Please confirm your email"
+        send_email(user.email, subject, html)
+
         login_user(user)
-        flash("You registered and are now logged in. Welcome!", "success")
+        flash("A confirmation email has been sent via email.", "success")
 
         return redirect(url_for("core.home"))
 
@@ -74,3 +77,24 @@ def confirm_email(token):
     else:
         flash("The confirmation link is invalid or has expired.", "danger")
     return redirect(url_for("core.home"))
+
+@accounts_bp.route("/inactive")
+@login_required
+def inactive():
+    if current_user.is_confirmed:
+        return redirect(url_for("core.home"))
+    return render_template("accounts/inactive.html")
+
+@accounts_bp.route("/resend")
+@login_required
+def resend_confirmation():
+    if current_user.is_confirmed:
+        flash("Your account has already been confirmed.", "success")
+        return redirect(url_for("core.home"))
+    token = generate_token(current_user.email)
+    confirm_url = url_for("accounts.confirm_email", token=token, _external=True)
+    html = render_template("accounts/confirm_email.html", confirm_url=confirm_url)
+    subject = "Please confirm your email"
+    send_email(current_user.email, subject, html)
+    flash("A new confirmation email has been sent.", "success")
+    return redirect(url_for("accounts.inactive"))
