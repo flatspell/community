@@ -98,3 +98,24 @@ def resend_confirmation():
     send_email(current_user.email, subject, html)
     flash("A new confirmation email has been sent.", "success")
     return redirect(url_for("accounts.inactive"))
+
+@accounts_bp.route("/forgot_password", methods=["GET", "POST"])
+@logout_required
+def forgot_password():
+    if current_user.is_authenticated:
+        flash("You are already logged in.", "info")
+        return redirect(url_for("core.home"))
+    if request.method == "POST":
+        user = User.query.filter_by(email=request.form["email"]).first()
+        if user:
+            token = generate_token(user.email)
+            recover_url = url_for("accounts.reset_with_token", token=token, _external=True)
+            html = render_template("accounts/recover.html", recover_url=recover_url)
+            subject = "Password reset requested"
+            send_email(user.email, subject, html)
+            flash("A password reset email has been sent via email.", "success")
+            return redirect(url_for("accounts.login"))
+        else:
+            flash("That email does not exist.", "danger")
+            return render_template("accounts/login.html")
+    return render_template("accounts/login.html")
