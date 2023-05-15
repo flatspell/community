@@ -9,7 +9,7 @@ from src.accounts.token import confirm_token, generate_token
 from src.utils.decorators import logout_required
 from src.utils.email import send_email
 
-from .forms import RegisterForm, LoginForm
+from .forms import RegisterForm, LoginForm, ResetPasswordRequestForm
 
 accounts_bp = Blueprint("accounts", __name__)
 
@@ -98,3 +98,18 @@ def resend_confirmation():
     send_email(current_user.email, subject, html)
     flash("A new confirmation email has been sent.", "success")
     return redirect(url_for("accounts.inactive"))
+
+@accounts_bp.route("/forgot_password", methods=["GET", "POST"])
+@logout_required
+def forgot_password():
+    if current_user.is_authenticated:
+        # flash("You are already logged in.", "info")
+        return redirect(url_for("core.home"))
+    form = ResetPasswordRequestForm(request.form)
+    if form.validate_on_submit():
+        user = User.query.filter_by(email=form.email.data).first()
+        if user:
+            send_email(user, "Password Reset", None)
+        flash('Check your email for the instructions to reset your password', "info")
+        return redirect(url_for("accounts.login"))
+    return render_template("accounts/reset_password.html", form=form)
