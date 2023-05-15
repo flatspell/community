@@ -5,6 +5,7 @@ from flask_login import LoginManager
 from flask_mail import Mail
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
+from flask_security import Security, SQLAlchemySessionUserDatastore
 
 app = Flask(__name__, static_url_path='/static', static_folder='static')
 
@@ -26,9 +27,12 @@ app.register_blueprint(accounts_bp)
 app.register_blueprint(core_bp)
 
 # Importing Models
-from src.accounts.models import User
+from src.accounts.models import User, Role
 
 login_manager.login_view = "accounts.login"
+
+user_datastore = SQLAlchemySessionUserDatastore(db.session, User, Role)
+security = Security(app, user_datastore)
 
 @login_manager.user_loader
 def load_user(user_id):
