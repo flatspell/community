@@ -43,6 +43,17 @@
               {% endfor %}
             {% endif %}
         </div>
+        <div class="form-floating">
+          {{ form.role(class="form-select mb-2") }}
+          {{ form.role.label }}
+          {% if form.role.errors %}
+            {% for error in form.role.errors %}
+              <div class="alert alert-danger" role="alert">
+                {{ error }}
+              </div>
+            {% endfor %}
+          {% endif %}
+        </div>
         <button class="w-100 btn btn-lg btn-primary" style="background-color: #1bae70" type="submit">Sign up</button>
         <p class="text-center mt-3">Already registered? <a href="{{ url_for('accounts.login') }}" style="color: #1bae70">Login now</a></p>
       </form>

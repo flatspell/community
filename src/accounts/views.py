@@ -4,7 +4,7 @@ from flask import Blueprint, flash, redirect, render_template, request, url_for
 from flask_login import login_required, login_user, logout_user, current_user
 
 from src import bcrypt, db
-from src.accounts.models import User
+from src.accounts.models import User, Role
 from src.accounts.token import confirm_token, generate_token
 from src.utils.decorators import logout_required
 from src.utils.email import send_email
@@ -20,6 +20,9 @@ def register():
     form = RegisterForm(request.form)
     if form.validate_on_submit():
         user = User(email=form.email.data, password=form.password.data)
+        role = Role(name=form.role.data)
+        user.roles.append(role)
+
         db.session.add(user)
         db.session.commit()
 
