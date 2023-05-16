@@ -37,6 +37,8 @@ def register():
         login_user(user)
         flash("A confirmation email has been sent via email.", "success")
 
+        if role.name in ["entrepreneur"]:
+            return redirect(url_for("core.community"))
         return redirect(url_for("core.home"))
 
     return render_template("accounts/register.html", form=form)
@@ -46,6 +48,8 @@ def register():
 def login():
     if current_user.is_authenticated:
         flash("You are already logged in.", "info")
+        if user.has_roles("entrepreneur"):
+            return redirect(url_for("core.community"))
         return redirect(url_for("core.home"))
     form = LoginForm(request.form)
     if form.validate_on_submit():
@@ -53,6 +57,8 @@ def login():
         user = user_datastore.find_user(email=form.email.data)
         if user and bcrypt.check_password_hash(user.password, request.form["password"]):
             login_user(user)
+            if user.has_roles("entrepreneur"):
+                return redirect(url_for("core.community"))
             return redirect(url_for("core.home"))
         else:
             flash("Invalid email and/or password.", "danger")
