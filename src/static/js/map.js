@@ -127,19 +127,19 @@ function createMarker(lat, lng, name, description) {
   });
 }
 
-// Function to fetch data and create markers
-function fetchDataAndCreateMarkers() {
-  // Fetch data from the server
-  fetch('/data')
-    .then(response => response.json())
-    .then(data => {
-      // Loop through the data and create markers
-      data.forEach(item => {
-        createMarker(item.lat, item.lng, item.name, item.description);
-      });
-    })
-    .catch(error => console.error('Error fetching data:', error));
-}
+// // Function to fetch data and create markers
+// function fetchDataAndCreateMarkers() {
+//   // Fetch data from the server
+//   fetch('/data')
+//     .then(response => response.json())
+//     .then(data => {
+//       // Loop through the data and create markers
+//       data.forEach(item => {
+//         createMarker(item.lat, item.lng, item.name, item.description);
+//       });
+//     })
+//     .catch(error => console.error('Error fetching data:', error));
+// }
 
-// Call the fetchDataAndCreateMarkers() function to initialize the markers
-fetchDataAndCreateMarkers();
+// // Call the fetchDataAndCreateMarkers() function to initialize the markers
+// fetchDataAndCreateMarkers();
