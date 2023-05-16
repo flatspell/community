@@ -2,6 +2,7 @@ from datetime import datetime
 
 from flask import Blueprint, flash, redirect, render_template, request, url_for
 from flask_login import login_required, login_user, logout_user, current_user
+from flask_security import SQLAlchemySessionUserDatastore
 
 from src import bcrypt, db
 from src.accounts.models import User, Role
@@ -13,6 +14,7 @@ from .forms import RegisterForm, LoginForm
 
 accounts_bp = Blueprint("accounts", __name__)
 
+user_datastore = SQLAlchemySessionUserDatastore(db.session, User, Role)
 
 @accounts_bp.route("/register", methods=["GET", "POST"])
 @logout_required
@@ -47,7 +49,8 @@ def login():
         return redirect(url_for("core.home"))
     form = LoginForm(request.form)
     if form.validate_on_submit():
-        user = User.query.filter_by(email=form.email.data).first()
+        # user = User.query.filter_by(email=form.email.data).first()
+        user = user_datastore.find_user(email=form.email.data)
         if user and bcrypt.check_password_hash(user.password, request.form["password"]):
             login_user(user)
             return redirect(url_for("core.home"))

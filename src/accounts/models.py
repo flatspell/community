@@ -48,6 +48,13 @@ class User(UserMixin, db.Model):
         self.is_admin = is_admin
         self.is_confirmed = is_confirmed
         self.confirmed_at = confirmed_at
+        self.is_active = True
+
+    def is_active(self):
+        return self.is_active
+    
+    def has_roles(self, *roles):
+        return any(role in self.roles for role in roles)
 
     def __repr__(self):
         return f"<email {self.email}>"

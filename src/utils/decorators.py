@@ -1,6 +1,6 @@
 from functools import wraps
 
-from flask import flash, redirect, url_for
+from flask import flash, redirect, url_for, abort
 from flask_login import current_user
 
 
@@ -22,4 +22,14 @@ def check_is_confirmed(func):
             return redirect(url_for("accounts.inactive"))
         return func(*args, **kwargs)
 
+    return decorated_function
+
+def roles_required(*roles):
+    def decorated_function(func):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            if not current_user.is_authenticated or not current_user.has_roles(*roles):
+                abort(403)  # Or redirect to a 403 Forbidden page
+            return func(*args, **kwargs)
+        return wrapper
     return decorated_function
