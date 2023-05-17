@@ -22,7 +22,7 @@ def investment():
 @core_bp.route('/account')
 @login_required
 @check_is_confirmed
-# @roles_required('investor', 'entrepreneur', 'economic_developer')
+@roles_required('admin')
 def account():
     return render_template('core/account.html')
 
