@@ -43,7 +43,7 @@ def unauthorized_page(error):
     return render_template("errors/401.html"), 401
 
 @app.errorhandler(403)
-def server_error_page(error):
+def forbidden(error):
     return render_template("errors/403.html"), 403
 
 @app.errorhandler(404)
