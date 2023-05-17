@@ -21,12 +21,15 @@ user_datastore = SQLAlchemySessionUserDatastore(db.session, User, Role)
 def register():
     form = RegisterForm(request.form)
     if form.validate_on_submit():
-        user = User(email=form.email.data, password=form.password.data)
-        role = Role(name=form.role.data)
-        user.roles.append(role)
+        role_name = form.role.data
+        role = Role.query.filter_by(name=role_name).first()
 
-        db.session.add(user)
-        db.session.commit()
+        if role:
+            user = User(email=form.email.data, password=form.password.data)
+            user.roles.append(role)
+
+            db.session.add(user)
+            db.session.commit()
 
         token = generate_token(user.email)
         confirm_url = url_for("accounts.confirm_email", token=token, _external=True)
