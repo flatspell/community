@@ -2,9 +2,10 @@ from datetime import datetime
 
 from flask import Blueprint, flash, redirect, render_template, request, url_for
 from flask_login import login_required, login_user, logout_user, current_user
+from flask_security import SQLAlchemySessionUserDatastore
 
 from src import bcrypt, db
-from src.accounts.models import User
+from src.accounts.models import User, Role
 from src.accounts.token import confirm_token, generate_token
 from src.utils.decorators import logout_required
 from src.utils.email import send_email
@@ -13,15 +14,22 @@ from .forms import RegisterForm, LoginForm
 
 accounts_bp = Blueprint("accounts", __name__)
 
+user_datastore = SQLAlchemySessionUserDatastore(db.session, User, Role)
 
 @accounts_bp.route("/register", methods=["GET", "POST"])
 @logout_required
 def register():
     form = RegisterForm(request.form)
     if form.validate_on_submit():
-        user = User(email=form.email.data, password=form.password.data)
-        db.session.add(user)
-        db.session.commit()
+        role_name = form.role.data
+        role = Role.query.filter_by(name=role_name).first()
+
+        if role:
+            user = User(email=form.email.data, password=form.password.data)
+            user.roles.append(role)
+
+            db.session.add(user)
+            db.session.commit()
 
         token = generate_token(user.email)
         confirm_url = url_for("accounts.confirm_email", token=token, _external=True)
@@ -32,6 +40,8 @@ def register():
         login_user(user)
         flash("A confirmation email has been sent via email.", "success")
 
+        if role.name in ["entrepreneur"]:
+            return redirect(url_for("core.community"))
         return redirect(url_for("core.home"))
 
     return render_template("accounts/register.html", form=form)
@@ -41,12 +51,17 @@ def register():
 def login():
     if current_user.is_authenticated:
         flash("You are already logged in.", "info")
+        if user.has_roles("entrepreneur"):
+            return redirect(url_for("core.community"))
         return redirect(url_for("core.home"))
     form = LoginForm(request.form)
     if form.validate_on_submit():
-        user = User.query.filter_by(email=form.email.data).first()
+        # user = User.query.filter_by(email=form.email.data).first()
+        user = user_datastore.find_user(email=form.email.data)
         if user and bcrypt.check_password_hash(user.password, request.form["password"]):
             login_user(user)
+            if user.has_roles("entrepreneur"):
+                return redirect(url_for("core.community"))
             return redirect(url_for("core.home"))
         else:
             flash("Invalid email and/or password.", "danger")
