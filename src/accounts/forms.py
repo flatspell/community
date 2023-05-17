@@ -37,8 +37,8 @@ class RegisterForm(FlaskForm):
     community = SelectField(
         "Which community are you in?",
         choices=[
-            ("clallam_wa", "Clallam County, WA"),
-            ("jefferson_wa", "Jefferson County, WA"),
+            ("clallam_wa", "Clallam County, WA (COIN)"),
+            ("jefferson_wa", "Jefferson County, WA (LION)"),
         ],
         validators=[DataRequired()]
     )
