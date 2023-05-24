@@ -9,10 +9,11 @@
 
 <div class="user-profile">
   <div class="profile-section">
-    <h2>Email Address</h2>
+    <h2>User Information</h2>
     <div class="form-group">
+      <p class="role-value">Role: {{ role_name }}</p>
+      <label for="email">Email Address</label>
       <input type="email" class="form-control" id="email" name="email" value="{{ current_user.email }}" readonly>
-      <button type="button" class="btn btn-primary" id="edit-email-btn">Edit</button>
     </div>
   </div>
 
