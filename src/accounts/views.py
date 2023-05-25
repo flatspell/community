@@ -5,7 +5,7 @@ from flask_login import login_required, login_user, logout_user, current_user
 from flask_security import SQLAlchemySessionUserDatastore
 
 from src import bcrypt, db
-from src.accounts.models import User, Role
+from src.accounts.models import User, Role, Network
 from src.accounts.token import confirm_token, generate_token
 from src.utils.decorators import logout_required
 from src.utils.email import send_email
@@ -22,7 +22,10 @@ def register():
     form = RegisterForm(request.form)
     if form.validate_on_submit():
         role_name = form.role.data
+        network_name = form.community.data
+
         role = Role.query.filter_by(name=role_name).first()
+        network = Network.query.filter_by(name=network_name).first()
 
         if role:
             user = User(email=form.email.data, password=form.password.data)

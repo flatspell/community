@@ -1,7 +1,8 @@
 from flask import Blueprint, render_template
-from flask_login import login_required
+from flask_login import login_required, current_user
 
 from src.utils.decorators import check_is_confirmed, roles_required
+from src.accounts.models import User
 
 core_bp = Blueprint("core", __name__)
 
@@ -22,9 +23,11 @@ def investment():
 @core_bp.route('/account')
 @login_required
 @check_is_confirmed
-@roles_required('admin')
+@roles_required('admin', 'investor', 'entrepreneur', 'economic_developer')
 def account():
-    return render_template('core/account.html')
+    user = User.query.get(current_user.id)
+    role_name = user.roles[0].name
+    return render_template('core/account.html', role_name=role_name)
 
 @core_bp.route('/commerce')
 @login_required

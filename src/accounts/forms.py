@@ -25,7 +25,20 @@ class RegisterForm(FlaskForm):
         choices=[
             ("investor", "Investor"),
             ("entrepreneur", "Entrepreneur"),
-            ("economic_developer", "Economic Developer")
+            ("economic_developer", "Economic Development Council"),
+            ("economic_developer", "Chamber of Commerce"),
+            ("economic_developer", "Nonprofit"),
+            ("entrepreneur", "Other"), 
+            # Set other to entrepreneur for now because it has least privileges.
+            # We can override other to whatever role is most appropriate later
+        ],
+        validators=[DataRequired()]
+    )
+    community = SelectField(
+        "Which community are you in?",
+        choices=[
+            ("1", "Clallam County, WA (COIN)"),
+            ("2", "Jefferson County, WA (LION)"),
         ],
         validators=[DataRequired()]
     )

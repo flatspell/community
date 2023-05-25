@@ -1,6 +1,5 @@
 from datetime import datetime
 
-# from flask_login import UserMixin
 from flask_security import RoleMixin, UserMixin
 
 from src import bcrypt, db
@@ -40,15 +39,17 @@ class User(UserMixin, db.Model):
                             secondary=roles_users,
                             backref=db.backref('users', lazy='dynamic')
                             )
+    network_id = db.Column(db.Integer, db.ForeignKey("networks.id"))
 
-    def __init__(self, email, password, is_admin=False, is_confirmed=False, confirmed_at=None):
+    def __init__(self, email, password, network_id, is_admin=False, is_confirmed=False, confirmed_at=None, is_active=True):
         self.email = email
         self.password = bcrypt.generate_password_hash(password).decode('utf-8')
         self.created_at = datetime.now()
         self.is_admin = is_admin
         self.is_confirmed = is_confirmed
         self.confirmed_at = confirmed_at
-        self.is_active = True
+        self.is_active = is_active
+        self.network_id = network_id
 
     def is_active(self):
         return self.is_active
@@ -58,3 +59,20 @@ class User(UserMixin, db.Model):
 
     def __repr__(self):
         return f"<email {self.email}>"
+    
+class Network(db.Model):
+
+    __tablename__ = "networks"
+
+    id = db.Column(db.Integer(), primary_key=True)
+    name = db.Column(db.String(80), unique=True)
+    county = db.Column(db.String(80))
+    state = db.Column(db.String(80))
+
+    def __init__(self, name, county, state):
+        self.name = name
+        self.county = county
+        self.state = state
+
+    def __repr__(self):
+        return f"<Network {self.name}>"
