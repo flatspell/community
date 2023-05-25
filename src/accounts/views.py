@@ -28,7 +28,7 @@ def register():
         network = Network.query.filter_by(name=network_name).first()
 
         if role:
-            user = User(email=form.email.data, password=form.password.data)
+            user = User(email=form.email.data, password=form.password.data, network_id=network)
             user.roles.append(role)
 
             db.session.add(user)
@@ -43,9 +43,10 @@ def register():
         login_user(user)
         flash("A confirmation email has been sent via email.", "success")
 
-        if role.name in ["entrepreneur"]:
+        if user.has_roles("entrepreneur"):
             return redirect(url_for("core.community"))
-        return redirect(url_for("core.home"))
+        else:
+            return redirect(url_for("core.home"))
 
     return render_template("accounts/register.html", form=form)
 
