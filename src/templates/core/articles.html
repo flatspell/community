@@ -1,0 +1,28 @@
+{% extends '_base.html' %}
+
+{% block title %}Investment & Business Resources{% endblock %}
+
+{% block content %}
+<div class="header-dropdown">
+  <h1>Investment & Business Resources</h1>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/header_dropdown.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/articles_page.css') }}">
+</div>
+
+<body>
+  <div class="grid-container">
+    <a href="articles/business_plan" class="grid-item">
+      <h2 class="article-title">How to create a business plan</h2>
+      <p class="article-content">Learn the essential steps to create a comprehensive business plan that outlines your goals, strategies, and financial projections for a successful venture.</p>
+    </a>
+    <a href="articles/business_plan" class="grid-item">
+      <h2 class="article-title">Understanding how securities laws work for local investing</h2>
+      <p class="article-content">Gain insights into the intricate workings of securities laws and regulations to navigate the world of local investing and make informed decisions.</p>
+    </a>
+    <a href="articles/business_plan" class="grid-item">
+      <h2 class="article-title">How to setup a local investment network in your community</h2>
+      <p class="article-content">Discover the key elements and practical steps involved in establishing a local investment network to foster economic growth and support local businesses in your community.</p>
+    </a>
+  </div>
+</body>
+{% endblock %}

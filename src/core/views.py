@@ -42,3 +42,17 @@ def commerce():
 @roles_required('admin', 'investor', 'entrepreneur', 'economic_developer')
 def community():
     return render_template('core/community.html')
+
+@core_bp.route('/articles')
+@login_required
+@check_is_confirmed
+@roles_required('admin', 'investor', 'entrepreneur', 'economic_developer')
+def resources():
+    return render_template('core/articles.html')
+
+@core_bp.route('/articles/business_plan')
+@login_required
+@check_is_confirmed
+@roles_required('admin', 'investor', 'entrepreneur', 'economic_developer')
+def business_plan():
+    return render_template('core/articles/business_plan.html')
