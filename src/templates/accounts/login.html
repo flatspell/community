@@ -8,7 +8,7 @@
     <main class="form-signin w-100 m-auto">
       <form role="form" method="post" action="">
         {{ form.csrf_token }}
-        <h1 class="h3 mb-3 fw-normal text-center">Please sign in</h1>
+        <h1 class="h3 mb-3 fw-normal text-center">👋 Nice to see you</h1>
 
         <div class="form-floating">
           {{ form.email(placeholder="email", class="form-control mb-2") }}
@@ -33,7 +33,7 @@
             {% endif %}
         </div>
         <button class="w-100 btn btn-lg btn-primary" type="submit" style="background-color: #1bae70">Sign in</button>
-        <p class="text-center mt-3">New User? <a href="{{ url_for('accounts.register') }}" style="color: #1bae70">Register now</a></p>
+        <p class="text-center mt-3">Don't have an account? <a href="{{ url_for('accounts.register') }}" style="color: #1bae70">Register now</a></p>
       </form>
     </main>
   </div>
