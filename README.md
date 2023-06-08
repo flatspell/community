@@ -19,6 +19,7 @@ pip install -r requirements.txt
 From the top level directory you can boot up a local version of the app and test your changes in real-time.
 ```
 git checkout -b yourname/yourtask
+source .env
 python manage.py run
 ```
 
