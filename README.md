@@ -1,4 +1,4 @@
-# community
+# localinvestor.app
 Repo for local investment network product, currently called LENA: Local Economic Network Accelerator. 
 I'm hoping to change the name to Lion.
 
