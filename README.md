@@ -3,8 +3,6 @@ Repo for local investment network product, currently called lina: Local Economic
 
 In development and will be launching at localinvestor.app
 
-Here's the original white-paper: https://docs.google.com/document/d/17CWfyLtK_Xe6IuP9kkiat9gJ85Rz_Z0KaHwy5GWUasg/edit#
-
 ## Heroku App
 This app is managed via Heroku and can be accessed at https://flatspell.herokuapp.com
 
