@@ -3,51 +3,20 @@
 {% block title %}Commerce{% endblock %}
 
 {% block content %}
-<head>
-  <title>My Web Page</title>
-  <!-- Link to Leaflet CSS file -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/maps.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/header_dropdown.css') }}">
-  <!-- Link to Leaflet JavaScript file -->
-  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-  <!-- <script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script> -->
-  <!-- Link to heatmap.js file -->
-</head>
-
-<div class="header-dropdown">
-  <h1>Commerce</h1>
-
-  <select id="location-dropdown">
-    <option value="port-angeles-wa">Clallam County, WA (COIN)</option>
-    <option value="port-townsend-wa">Jefferson County, WA (LION)</option>
-  </select>
-</div>
+<div class="main-content">
+  <div class="header-dropdown">
+    <h1>Commerce</h1>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/header_dropdown.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navigation.css') }}">
+    <select id="location-dropdown">
+      <option value="port-angeles-wa">Clallam County, WA (COIN)</option>
+      <!-- <option value="port-townsend-wa">Jefferson County, WA (LION)</option> -->
+    </select>
+  </div>
 
   <ul>
-
-    <!-- <h2>Economic Overview</h2>
-
-      <div class="big-value-container">
-        <div class="big-value-item">
-          <h3>Population</h3>
-          <p class="big-value">20,071<span class="arrow-up"></span></p>
-        </div>
-        <div class="big-value-item">
-          <h3>Median Household Income</h3>
-          <p class="big-value">$48,567<span class="arrow-up"></span></p>
-        </div>
-        <div class="big-value-item">
-          <h3>Poverty Rate</h3>
-          <p class="big-value">14.6%<span class="arrow-down"></span></p>
-        </div>
-      </div> -->
-      <h2>Local Businesses</h2>
-      <iframe class="airtable-embed" src="https://airtable.com/embed/shroCytNv48jt3Mel?backgroundColor=green" frameborder="0" onmousewheel="" width="100%" height="533" style="background: transparent; border: 1px solid #ccc;"></iframe>
-    <!-- <h2>Tourism</h2>
-    
-      <div id="commerce-map" class="commerce-map"></div>
-      <script src="static/js/map.js"></script> -->
+    <h2>Local Businesses</h2>
+    <iframe class="airtable-embed" src="https://airtable.com/embed/shroCytNv48jt3Mel?backgroundColor=green" frameborder="0" onmousewheel="" width="100%" height="533" style="background: transparent; border: 1px solid #ccc;"></iframe>
   </ul>
-  
+</div>
 {% endblock %}
