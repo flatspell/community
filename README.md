@@ -1,5 +1,8 @@
 # localinvestor.app
-Repo for local investment network product, currently called LENA: Local Economic Network Accelerator. 
+Repo for local investment network product, currently called lina: Local Economic Network Accelerator. 
+
+In development and will be launching at localinvestor.app
+
 I'm hoping to change the name to Lion.
 
 Here's the original white-paper: https://docs.google.com/document/d/17CWfyLtK_Xe6IuP9kkiat9gJ85Rz_Z0KaHwy5GWUasg/edit#
