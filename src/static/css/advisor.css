@@ -1,33 +1,32 @@
-.community-main {
+.advisor-main {
   display: fixed;
   justify-content: space-between;
   margin-top: 20px;
-  left: 225px;
+  left: 220px;
 }
 
-.community-section {
+.advisor-section {
   position: relative;
   flex-basis: calc(33.33% - 20px);
   background-color: #f9f9f9;
-  padding: 20px;
+  padding: 40px;
   margin-right: 20px;
-  left: 225px;
 }
 
-.community-section:last-child {
+.advisor-section:last-child {
   margin-right: 0;
 }
 
-.community-section h2 {
+.advisor-section h2 {
   font-size: 24px;
   margin-bottom: 10px;
 }
 
-.community-section p {
+.advisor-section p {
   margin-bottom: 20px;
 }
 
-.community-section a {
+.advisor-section a {
   position: relative;
   bottom: 20px;
   left: 0;
@@ -44,11 +43,11 @@
   width: 80%;
 }
 
-.community-section a:hover {
+.advisor-section a:hover {
   background-color: #000;
 }
 
-.community-image {
+.advisor-image {
   width: 300px;
   height: 300px;
   margin: 0 auto 40px;

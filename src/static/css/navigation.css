@@ -99,7 +99,8 @@
 
 .main-content {
   position: fixed;
-  left: 250px;
+  left: 225px;
+  width: 100%;
 }
 
 .nav-btn {

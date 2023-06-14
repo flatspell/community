@@ -1,0 +1,24 @@
+{% extends '_base.html' %}
+
+{% block title %}Advisor Program{% endblock %}
+
+{% block content %}
+<div class="header-dropdown">
+  <h1>Become an Advisor</h1>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/header_dropdown.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/advisor.css') }}">
+  <!-- <select id="location-dropdown"> -->
+		<!-- <option value="port-angeles-wa">Clallam County, WA (COIN)</option> -->
+    <!-- <option value="port-townsend-wa">Jefferson County, WA (LION)</option> -->
+  <!-- </select> -->
+</div>
+
+<main class="advisor-main">
+  <section class="advisor-section">
+    <h2>Mentorship & Advising</h2>
+    <p>Click here to find a mentor in your local community, and find time to meet and discuss challanges or opportunities.</p>
+		<img class="advisor-image" src="{{ url_for('static', filename='images/undraw_community_re_cyrm.svg') }}" alt="Image Description">
+    <a href="#">Join the Community</a>
+  </section>
+</main>
+{% endblock %}
