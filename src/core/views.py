@@ -49,3 +49,10 @@ def community():
 @roles_required('admin', 'investor', 'entrepreneur', 'economic_developer')
 def advisor():
     return render_template('core/advisor.html')
+
+@core_bp.route('/events')
+@login_required
+@check_is_confirmed
+@roles_required('admin', 'investor', 'entrepreneur', 'economic_developer')
+def events():
+    return render_template('core/events.html')

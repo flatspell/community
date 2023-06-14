@@ -1,0 +1,56 @@
+.event-main {
+  display: fixed;
+  justify-content: space-between;
+  margin-top: 20px;
+  left: 220px;
+}
+
+.event-section {
+  position: relative;
+  flex-basis: calc(33.33% - 20px);
+  background-color: #f9f9f9;
+  padding: 40px;
+  margin-right: 20px;
+}
+
+.event-section:last-child {
+  margin-right: 0;
+}
+
+.event-section h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.event-section p {
+  margin-bottom: 20px;
+}
+
+.event-section a {
+  position: relative;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  display: block;
+  background-color: #1bae70;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease-in-out;
+  width: 80%;
+}
+
+.event-section a:hover {
+  background-color: #000;
+}
+
+.event-image {
+  width: 300px;
+  height: 300px;
+  margin: 0 auto 40px;
+  display: block;
+  padding: 10px 20px;
+}
