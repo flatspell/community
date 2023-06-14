@@ -5,11 +5,12 @@
 }
 
 .community-section {
-  position: relative;
+  position: fixed;
   flex-basis: calc(33.33% - 20px);
   background-color: #f9f9f9;
   padding: 20px;
   margin-right: 20px;
+  left: 250px;
 }
 
 .community-section:last-child {

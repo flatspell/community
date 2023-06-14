@@ -98,7 +98,8 @@
 }
 
 .main-content {
-  position: relative;
+  position: fixed;
+  left: 250px;
 }
 
 .nav-btn {
