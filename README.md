@@ -1,5 +1,5 @@
 # localinvestor.app
-Repo for local investment network product, currently called lina: Local Economic Network Accelerator. 
+Repo for local investment network product, currently called lina: Local Investment Network Accelerator. 
 
 In development and will be launching at localinvestor.app
 
