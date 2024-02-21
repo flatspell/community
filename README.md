@@ -1,5 +1,7 @@
 # localinvestor.app
-Repo for local investment network product, currently called lina: Local Investment Network Accelerator. 
+This project is now defunct. 
+
+Repo for local investment network product prototype partnered with Port Angeles Chamber of Commerce.
 
 In development and will be launching at localinvestor.app
 
