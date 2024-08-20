@@ -1,7 +1,7 @@
 # localinvestor.app
 This project is now defunct. 
 
-Repo for local investment network product prototype partnered with Port Angeles Chamber of Commerce.
+Repo for local investment network product prototype partnered with Port Angeles Chamber of Commerce, Jefferson County Economic Development, and local investment leaders in Montana and New York.
 
 In development and will be launching at localinvestor.app
 
