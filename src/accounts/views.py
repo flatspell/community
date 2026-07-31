@@ -25,10 +25,10 @@ def register():
         network_name = form.community.data
 
         role = Role.query.filter_by(name=role_name).first()
-        network = Network.query.filter_by(name=network_name).first()
+        network = Network.query.get(int(network_name))
 
         if role:
-            user = User(email=form.email.data, password=form.password.data, network_id=network)
+            user = User(email=form.email.data, password=form.password.data, network_id=network.id)
             user.roles.append(role)
 
             db.session.add(user)

@@ -35,6 +35,7 @@ class DevelopmentConfig(Config):
     DEBUG = True
     WTF_CSRF_ENABLED = False
     DEBUG_TB_ENABLED = True
+    MAIL_SUPPRESS_SEND = True
 
 
 class TestingConfig(Config):
